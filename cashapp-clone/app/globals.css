@@ -35,6 +35,8 @@
   --color-primary: var(--primary);
   --color-cash-green: var(--cash-green);
   --color-cash-green-foreground: var(--cash-green-foreground);
+  --color-cash-ink: var(--cash-ink);
+  --color-cash-ink-muted: var(--cash-ink-muted);
   --color-popover-foreground: var(--popover-foreground);
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
