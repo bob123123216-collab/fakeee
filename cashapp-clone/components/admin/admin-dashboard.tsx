@@ -69,8 +69,26 @@ export function AdminDashboard() {
     mutate()
   }
 
-  const copy = (value: string) => {
-    navigator.clipboard?.writeText(value)
+  const copy = async (value: string) => {
+    try {
+      await navigator.clipboard?.writeText(value)
+    } catch {
+      // Clipboard API can be blocked by permissions policy (e.g. in an iframe).
+      // Fall back to a temporary textarea + execCommand.
+      try {
+        const textarea = document.createElement("textarea")
+        textarea.value = value
+        textarea.style.position = "fixed"
+        textarea.style.opacity = "0"
+        document.body.appendChild(textarea)
+        textarea.focus()
+        textarea.select()
+        document.execCommand("copy")
+        document.body.removeChild(textarea)
+      } catch {
+        // Ignore — still show the copied confirmation so the UI doesn't break.
+      }
+    }
     setCopied(value)
     setTimeout(() => setCopied(null), 1500)
   }
