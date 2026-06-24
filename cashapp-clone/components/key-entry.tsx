@@ -2,7 +2,7 @@
 
 import type React from "react"
 import { useState } from "react"
-import { Loader2, KeyRound } from "lucide-react"
+import { Loader2, KeyRound, Shield } from "lucide-react"
 
 export function KeyEntry({
   onSubmit,
@@ -60,6 +60,14 @@ export function KeyEntry({
           {loading ? "Checking..." : "Unlock"}
         </button>
       </form>
+
+      <a
+        href="/admin"
+        className="flex items-center gap-1.5 text-sm font-medium text-cash-green-foreground/70 underline-offset-4 transition hover:text-cash-green-foreground hover:underline"
+      >
+        <Shield className="h-4 w-4" aria-hidden="true" />
+        Admin login
+      </a>
     </div>
   )
 }
